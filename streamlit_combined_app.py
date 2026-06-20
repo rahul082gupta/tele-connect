@@ -155,19 +155,33 @@ else:
         st.session_state.conversation_history = []
     if "combined_user_input" not in st.session_state:
         st.session_state.combined_user_input = ""
-    if "pending_user_input" not in st.session_state:
-        st.session_state.pending_user_input = None
 
     def _submit_retention_message():
-        if st.session_state.combined_user_input:
-            st.session_state.pending_user_input = st.session_state.combined_user_input
-            st.session_state.combined_user_input = ""
+        text = st.session_state.combined_user_input.strip()
+        if not text:
+            st.warning("Please enter a retention request before sending.")
+            return
+
+        with st.spinner("Agent analyzing..."):
+            response = st.session_state.agent.process_user_input(text)
+
+        st.session_state.conversation_history.append({
+            "role": "user",
+            "content": text,
+        })
+        st.session_state.conversation_history.append({
+            "role": "assistant",
+            "content": response["response"],
+            "tool_calls": response.get("tool_calls", []),
+            "tool_results": response.get("tool_results", []),
+            "status": response.get("status", "unknown"),
+        })
+        st.session_state.combined_user_input = ""
 
     def _clear_retention_conversation():
         st.session_state.conversation_history = []
         st.session_state.agent.reset_conversation()
         st.session_state.combined_user_input = ""
-        st.session_state.pending_user_input = None
 
     mode = st.radio(
         "Retention Agent Mode:",
@@ -198,28 +212,13 @@ else:
                                 st.markdown(f"**Result {i}**")
                                 st.json(tr)
 
-        user_input = st.text_input(
-            "Your message: eg. Check on CUST001' or 'Customer CUST002 threatens to switch",
-            placeholder="E.g., 'Check on CUST001' or 'Customer CUST002 threatens to switch'",
-            key="combined_user_input",
-        )
-        st.button("Send", use_container_width=True, on_click=_submit_retention_message)
-
-        if st.session_state.pending_user_input:
-            with st.spinner("Agent analyzing..."):
-                response = st.session_state.agent.process_user_input(st.session_state.pending_user_input)
-            st.session_state.conversation_history.append({
-                "role": "user",
-                "content": st.session_state.pending_user_input,
-            })
-            st.session_state.conversation_history.append({
-                "role": "assistant",
-                "content": response["response"],
-                "tool_calls": response.get("tool_calls", []),
-                "tool_results": response.get("tool_results", []),
-                "status": response.get("status", "unknown"),
-            })
-            st.session_state.pending_user_input = None
+        with st.form("retention_form"):
+            st.text_input(
+                "Your message: eg. Check on CUST001' or 'Customer CUST002 threatens to switch",
+                placeholder="E.g., 'Check on CUST001' or 'Customer CUST002 threatens to switch'",
+                key="combined_user_input",
+            )
+            st.form_submit_button("Send", use_container_width=True, on_click=_submit_retention_message)
 
         if st.session_state.conversation_history:
             st.button("🔄 Clear Conversation", on_click=_clear_retention_conversation)
