@@ -1,7 +1,15 @@
+import sys
+from pathlib import Path
+
+# Allow running this script directly from the src folder for local debugging.
+# When the script is imported as part of the package, this is a no-op.
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
 import pandas as pd
 import joblib
 import numpy as np
-from pathlib import Path
 
 from src.data_quality import DataQualityProcessor
 from src.feature_engineering import create_features
@@ -14,7 +22,18 @@ MODEL_PATH = (
     / "churn_model.joblib"
 )
 
-model = joblib.load(MODEL_PATH)
+model = None
+MODEL_AVAILABLE = False
+try:
+    model = joblib.load(MODEL_PATH)
+    MODEL_AVAILABLE = True
+except FileNotFoundError:
+    # Clear diagnostic message for logs; do not crash import time so app can show friendly guidance
+    print(f"Model file not found at: {MODEL_PATH}")
+    print("Ensure you include models/churn_model.joblib in the repository or set MODEL_PATH environment variable to a valid file path.")
+except Exception as e:
+    print(f"Failed loading model from {MODEL_PATH}: {e}")
+
 META_PATH = MODEL_PATH.with_name("churn_model_metadata.json")
 
 metadata = {}
@@ -31,6 +50,14 @@ if META_PATH.exists():
 def predict_churn(
     customer_data: dict
 ):
+
+    # Fail fast with a clear message when the model artifact is missing in deployment
+    if not MODEL_AVAILABLE:
+        raise FileNotFoundError(
+            f"Trained model not available at {MODEL_PATH}.\n"
+            "Please add the file models/churn_model.joblib to the repository before deploying,\n"
+            "or set the environment variable MODEL_PATH to point to a valid joblib model file."
+        )
 
     df = pd.DataFrame(
         [customer_data]

@@ -1,1 +1,32 @@
-{"required_columns": ["age", "gender", "tenure_months", "contract_type", "monthly_charges", "total_charges", "internet_service", "phone_service", "avg_monthly_gb_used", "num_support_tickets", "avg_monthly_minutes", "satisfaction_score", "payment_method", "num_additional_services", "charge_per_month_of_tenure", "support_ticket_rate", "usage_per_month", "customer_lifetime_value", "days_since_last_interaction"], "engineered_features": ["charge_per_month_of_tenure", "support_ticket_rate", "usage_per_month", "customer_lifetime_value"], "best_auc": 0.7107945131175815}
+{
+    "best_model": "LogisticRegression",
+    "best_auc": 0.710434688814583,
+    "required_columns": [
+        "age",
+        "gender",
+        "tenure_months",
+        "contract_type",
+        "monthly_charges",
+        "total_charges",
+        "internet_service",
+        "phone_service",
+        "avg_monthly_gb_used",
+        "num_support_tickets",
+        "avg_monthly_minutes",
+        "satisfaction_score",
+        "payment_method",
+        "num_additional_services",
+        "charge_per_month_of_tenure",
+        "support_ticket_rate",
+        "usage_per_month",
+        "customer_lifetime_value",
+        "days_since_last_interaction"
+    ],
+    "engineered_features": [
+        "charge_per_month_of_tenure",
+        "support_ticket_rate",
+        "usage_per_month",
+        "customer_lifetime_value",
+        "days_since_last_interaction"
+    ]
+}
