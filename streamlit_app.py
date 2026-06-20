@@ -90,23 +90,34 @@ if app_mode == "Churn Prediction":
             sample["customer_id"] = customer_id
 
         with st.spinner("Running prediction..."):
-            if use_api and api_url:
-                try:
-                    resp = requests.post(api_url, json=sample, timeout=10)
-                    resp.raise_for_status()
-                    result = resp.json()
-                except Exception as e:
-                    st.error(f"API request failed: {e}")
+            result = None
+            try:
+                if use_api and api_url:
+                    try:
+                        resp = requests.post(api_url, json=sample, timeout=10)
+                        resp.raise_for_status()
+                        result = resp.json()
+                    except Exception as e:
+                        st.error(f"API request failed: {e}")
+                        result = predict_churn(sample)
+                else:
                     result = predict_churn(sample)
-            else:
-                result = predict_churn(sample)
+            except FileNotFoundError as error:
+                st.error(
+                    "Model artifact missing. "
+                    "Please add models/churn_model.joblib to the repo or configure MODEL_PATH.\n"
+                    f"Details: {error}"
+                )
+            except Exception as error:
+                st.error(f"Prediction failed: {error}")
 
-        st.subheader("Prediction")
-        st.write("Churn probability:", result.get("churn_probability"))
-        st.write("Risk tier:", result.get("risk_tier"))
-        st.subheader("Top risk factors")
-        for factor in result.get("top_risk_factors", []):
-            st.write("-", factor)
+        if result:
+            st.subheader("Prediction")
+            st.write("Churn probability:", result.get("churn_probability"))
+            st.write("Risk tier:", result.get("risk_tier"))
+            st.subheader("Top risk factors")
+            for factor in result.get("top_risk_factors", []):
+                st.write("-", factor)
 
     st.markdown("---")
     st.header("Batch predict from CSV")
