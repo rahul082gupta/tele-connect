@@ -315,12 +315,7 @@ flowchart TD
     K --> L[Download JSON report]
     H --> M[Review results]
 ```
-<img width="2514" height="1431" alt="Screenshot 2026-06-20 164108" src="https://github.com/user-attachments/assets/fc9d87a6-d7e1-478b-8e7a-ed84babcc6b2" />
-<img width="2537" height="1387" alt="Screenshot 2026-06-20 164037" src="https://github.com/user-attachments/assets/f883bf48-1531-499c-b4aa-ef8fdef3d125" />
-<img width="2484" height="1342" alt="Screenshot 2026-06-20 164026" src="https://github.com/user-attachments/assets/5efd4dd3-9621-47a0-9cb4-22078ebf041d" />
-<img width="2481" height="1377" alt="Screenshot 2026-06-20 164016" src="https://github.com/user-attachments/assets/4eb91af2-a17d-4d5c-a64d-55775fe27ccb" />
-<img width="2461" height="1417" alt="Screenshot 2026-06-20 163152" src="https://github.com/user-attachments/assets/b2e94160-4301-4a1f-9638-0e391c151715" />
-<img width="2490" height="1292" alt="Screenshot 2026-06-20 152723" src="https://github.com/user-attachments/assets/dfe6f6b9-fdba-40cb-b742-007dbe1dc6a1" />
+
 
 # Step 9: Run Retention Agent Regression Tests
 
@@ -433,6 +428,9 @@ Converted to:
 ```text
 male
 ```
+<img width="2538" height="1508" alt="Screenshot 2026-06-20 174035" src="https://github.com/user-attachments/assets/47ece7ca-61ed-4aac-895d-2e71953affbe" />
+<img width="2522" height="1508" alt="Screenshot 2026-06-20 174015" src="https://github.com/user-attachments/assets/01912897-05b9-4737-a9fa-09659a147c2f" />
+<img width="2477" height="1391" alt="Screenshot 2026-06-20 175204" src="https://github.com/user-attachments/assets/07a267a0-8238-49c9-a46a-1b6b95715408" />
 
 ---
 
