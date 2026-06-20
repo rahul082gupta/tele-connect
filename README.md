@@ -29,7 +29,6 @@ churn_project/
 ├── outputs/
 │   ├── confusion_matrix.png
 │   ├── roc_curve.png
-│   ├── feature_importance.png
 │
 ├── src/
 │   ├── data_quality.py
@@ -315,6 +314,12 @@ flowchart TD
     K --> L[Download JSON report]
     H --> M[Review results]
 ```
+<img width="2514" height="1431" alt="Screenshot 2026-06-20 164108" src="https://github.com/user-attachments/assets/fc9d87a6-d7e1-478b-8e7a-ed84babcc6b2" />
+<img width="2537" height="1387" alt="Screenshot 2026-06-20 164037" src="https://github.com/user-attachments/assets/f883bf48-1531-499c-b4aa-ef8fdef3d125" />
+<img width="2484" height="1342" alt="Screenshot 2026-06-20 164026" src="https://github.com/user-attachments/assets/5efd4dd3-9621-47a0-9cb4-22078ebf041d" />
+<img width="2481" height="1377" alt="Screenshot 2026-06-20 164016" src="https://github.com/user-attachments/assets/4eb91af2-a17d-4d5c-a64d-55775fe27ccb" />
+<img width="2461" height="1417" alt="Screenshot 2026-06-20 163152" src="https://github.com/user-attachments/assets/b2e94160-4301-4a1f-9638-0e391c151715" />
+<img width="2490" height="1292" alt="Screenshot 2026-06-20 152723" src="https://github.com/user-attachments/assets/dfe6f6b9-fdba-40cb-b742-007dbe1dc6a1" />
 
 # Step 9: Run Retention Agent Regression Tests
 
