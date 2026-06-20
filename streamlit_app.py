@@ -29,7 +29,7 @@ with st.sidebar:
     st.markdown(
         "- Use **Churn Prediction** for single or batch churn risk scoring.\n"
         "- Use **Retention Agent** for natural language retention workflows.\n"
-        "- This page now hosts both experiences in one app."
+        "- `streamlit run streamlit_combined_app.py` to open this unified app."
     )
     st.markdown("---")
     st.markdown("### Test Customers")
@@ -130,7 +130,7 @@ if app_mode == "Churn Prediction":
             st.error(f"Failed to read uploaded CSV: {e}")
 
     st.markdown("---")
-    st.markdown("Switch to Retention Agent mode in the sidebar for the retention workflow.")
+    st.markdown("For the integrated retention agent, switch to the Retention Agent mode in the sidebar.")
 
 else:
     st.header("🤖 Retention Agent")
@@ -142,6 +142,21 @@ else:
         st.session_state.agent = RetentionAgent()
     if "conversation_history" not in st.session_state:
         st.session_state.conversation_history = []
+    if "combined_user_input" not in st.session_state:
+        st.session_state.combined_user_input = ""
+    if "pending_user_input" not in st.session_state:
+        st.session_state.pending_user_input = None
+
+    def _submit_retention_message():
+        if st.session_state.combined_user_input:
+            st.session_state.pending_user_input = st.session_state.combined_user_input
+            st.session_state.combined_user_input = ""
+
+    def _clear_retention_conversation():
+        st.session_state.conversation_history = []
+        st.session_state.agent.reset_conversation()
+        st.session_state.combined_user_input = ""
+        st.session_state.pending_user_input = None
 
     mode = st.radio(
         "Retention Agent Mode:",
@@ -173,32 +188,30 @@ else:
                                 st.json(tr)
 
         user_input = st.text_input(
-            "Your message:",
+            "Your message: eg. Check on CUST001' or 'Customer CUST002 threatens to switch",
             placeholder="E.g., 'Check on CUST001' or 'Customer CUST002 threatens to switch'",
             key="combined_user_input",
         )
-        if st.button("Send", use_container_width=True):
-            if user_input:
-                st.session_state.conversation_history.append({
-                    "role": "user",
-                    "content": user_input,
-                })
-                with st.spinner("Agent analyzing..."):
-                    response = st.session_state.agent.process_user_input(user_input)
-                st.session_state.conversation_history.append({
-                    "role": "assistant",
-                    "content": response["response"],
-                    "tool_calls": response.get("tool_calls", []),
-                    "tool_results": response.get("tool_results", []),
-                    "status": response.get("status", "unknown"),
-                })
-                st.experimental_rerun()
+        st.button("Send", use_container_width=True, on_click=_submit_retention_message)
+
+        if st.session_state.pending_user_input:
+            with st.spinner("Agent analyzing..."):
+                response = st.session_state.agent.process_user_input(st.session_state.pending_user_input)
+            st.session_state.conversation_history.append({
+                "role": "user",
+                "content": st.session_state.pending_user_input,
+            })
+            st.session_state.conversation_history.append({
+                "role": "assistant",
+                "content": response["response"],
+                "tool_calls": response.get("tool_calls", []),
+                "tool_results": response.get("tool_results", []),
+                "status": response.get("status", "unknown"),
+            })
+            st.session_state.pending_user_input = None
 
         if st.session_state.conversation_history:
-            if st.button("🔄 Clear Conversation"):
-                st.session_state.conversation_history = []
-                st.session_state.agent.reset_conversation()
-                st.experimental_rerun()
+            st.button("🔄 Clear Conversation", on_click=_clear_retention_conversation)
 
     elif mode == "Test Runner":
         st.markdown("Run the full evaluation suite for the retention agent.")
