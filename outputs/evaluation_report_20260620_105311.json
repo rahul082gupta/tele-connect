@@ -1,0 +1,495 @@
+{
+  "timestamp": "2026-06-20T10:53:11.455265",
+  "summary": {
+    "total_tests": 14,
+    "passed": 10,
+    "failed": 4,
+    "pass_rate": 0.7142857142857143
+  },
+  "category_breakdown": {
+    "single_tool_happy_path": {
+      "total": 1,
+      "passed": 0,
+      "avg_score": 4.0,
+      "pass_rate": 0.0
+    },
+    "multi_step_chaining": {
+      "total": 2,
+      "passed": 2,
+      "avg_score": 4.5,
+      "pass_rate": 1.0
+    },
+    "ambiguous_input": {
+      "total": 3,
+      "passed": 3,
+      "avg_score": 4.0,
+      "pass_rate": 1.0
+    },
+    "out_of_scope": {
+      "total": 2,
+      "passed": 2,
+      "avg_score": 4.0,
+      "pass_rate": 1.0
+    },
+    "escalation_trigger": {
+      "total": 3,
+      "passed": 1,
+      "avg_score": 3.8333333333333335,
+      "pass_rate": 0.3333333333333333
+    },
+    "model_disagreement": {
+      "total": 1,
+      "passed": 1,
+      "avg_score": 4.0,
+      "pass_rate": 1.0
+    },
+    "edge_case": {
+      "total": 2,
+      "passed": 1,
+      "avg_score": 4.0,
+      "pass_rate": 0.5
+    }
+  },
+  "average_rubric_scores": {
+    "factual_correctness": 4.0,
+    "tool_use_appropriateness": 4.571428571428571,
+    "actionability": 2.5714285714285716,
+    "hallucination_detection": 5.0
+  },
+  "test_results": [
+    {
+      "test_id": "T001",
+      "passed": false,
+      "failure_reason": "Response incomplete or missing key elements",
+      "automated_metrics": {
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "response_completeness": 0.332,
+        "hallucination_score": 0.0,
+        "latency_ms": 0.07748603820800781
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 5,
+          "justification": "Tool orchestration score based on 1 tool calls"
+        },
+        "actionability": {
+          "score": 2,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 4.0
+    },
+    {
+      "test_id": "T002",
+      "passed": true,
+      "failure_reason": null,
+      "automated_metrics": {
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "response_completeness": 1.0,
+        "hallucination_score": 0.0,
+        "latency_ms": 651.6833305358887
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 5,
+          "justification": "Tool orchestration score based on 4 tool calls"
+        },
+        "actionability": {
+          "score": 4,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 4.5
+    },
+    {
+      "test_id": "T003",
+      "passed": true,
+      "failure_reason": null,
+      "automated_metrics": {
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "response_completeness": 1.0,
+        "hallucination_score": 0.0,
+        "latency_ms": 37.491559982299805
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 5,
+          "justification": "Tool orchestration score based on 4 tool calls"
+        },
+        "actionability": {
+          "score": 4,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 4.5
+    },
+    {
+      "test_id": "T004",
+      "passed": true,
+      "failure_reason": null,
+      "automated_metrics": {
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "response_completeness": 1.0,
+        "hallucination_score": 0.0,
+        "latency_ms": 0.012636184692382812
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 5,
+          "justification": "Tool orchestration score based on 0 tool calls"
+        },
+        "actionability": {
+          "score": 2,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 4.0
+    },
+    {
+      "test_id": "T005",
+      "passed": true,
+      "failure_reason": null,
+      "automated_metrics": {
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "response_completeness": 1.0,
+        "hallucination_score": 0.0,
+        "latency_ms": 0.0059604644775390625
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 5,
+          "justification": "Tool orchestration score based on 0 tool calls"
+        },
+        "actionability": {
+          "score": 2,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 4.0
+    },
+    {
+      "test_id": "T006",
+      "passed": true,
+      "failure_reason": null,
+      "automated_metrics": {
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "response_completeness": 1.0,
+        "hallucination_score": 0.0,
+        "latency_ms": 0.0064373016357421875
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 5,
+          "justification": "Tool orchestration score based on 0 tool calls"
+        },
+        "actionability": {
+          "score": 2,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 4.0
+    },
+    {
+      "test_id": "T007",
+      "passed": true,
+      "failure_reason": null,
+      "automated_metrics": {
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "response_completeness": 0.484,
+        "hallucination_score": 0.0,
+        "latency_ms": 0.0035762786865234375
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 5,
+          "justification": "Tool orchestration score based on 0 tool calls"
+        },
+        "actionability": {
+          "score": 2,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 4.0
+    },
+    {
+      "test_id": "T008",
+      "passed": true,
+      "failure_reason": null,
+      "automated_metrics": {
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "response_completeness": 0.432,
+        "hallucination_score": 0.0,
+        "latency_ms": 0.003814697265625
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 5,
+          "justification": "Tool orchestration score based on 0 tool calls"
+        },
+        "actionability": {
+          "score": 2,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 4.0
+    },
+    {
+      "test_id": "T009",
+      "passed": false,
+      "failure_reason": "Poor tool selection accuracy",
+      "automated_metrics": {
+        "tool_selection_accuracy": 0.0,
+        "parameter_extraction_accuracy": 0.0,
+        "response_completeness": 0.5,
+        "hallucination_score": 0.0,
+        "latency_ms": 0.0030994415283203125
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 1,
+          "justification": "Tool orchestration score based on 0 tool calls"
+        },
+        "actionability": {
+          "score": 2,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 3.0
+    },
+    {
+      "test_id": "T010",
+      "passed": true,
+      "failure_reason": null,
+      "automated_metrics": {
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "response_completeness": 1.0,
+        "hallucination_score": 0.0,
+        "latency_ms": 0.020742416381835938
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 5,
+          "justification": "Tool orchestration score based on 1 tool calls"
+        },
+        "actionability": {
+          "score": 2,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 4.0
+    },
+    {
+      "test_id": "T011",
+      "passed": false,
+      "failure_reason": "Response incomplete or missing key elements",
+      "automated_metrics": {
+        "tool_selection_accuracy": 0.75,
+        "parameter_extraction_accuracy": 1.0,
+        "response_completeness": 0.0,
+        "hallucination_score": 0.0,
+        "latency_ms": 35.86935997009277
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 4,
+          "justification": "Tool orchestration score based on 4 tool calls"
+        },
+        "actionability": {
+          "score": 5,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 4.5
+    },
+    {
+      "test_id": "T012",
+      "passed": true,
+      "failure_reason": null,
+      "automated_metrics": {
+        "tool_selection_accuracy": 0.5,
+        "parameter_extraction_accuracy": 1.0,
+        "response_completeness": 1.0,
+        "hallucination_score": 0.0,
+        "latency_ms": 35.16030311584473
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 4,
+          "justification": "Tool orchestration score based on 4 tool calls"
+        },
+        "actionability": {
+          "score": 3,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 4.0
+    },
+    {
+      "test_id": "T013",
+      "passed": true,
+      "failure_reason": null,
+      "automated_metrics": {
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "response_completeness": 0.618,
+        "hallucination_score": 0.0,
+        "latency_ms": 0.012874603271484375
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 5,
+          "justification": "Tool orchestration score based on 0 tool calls"
+        },
+        "actionability": {
+          "score": 2,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 4.0
+    },
+    {
+      "test_id": "T014",
+      "passed": false,
+      "failure_reason": "Response incomplete or missing key elements",
+      "automated_metrics": {
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "response_completeness": 0.348,
+        "hallucination_score": 0.0,
+        "latency_ms": 0.006198883056640625
+      },
+      "rubric_scores": {
+        "factual_correctness": {
+          "score": 4,
+          "justification": "Response aligns with tool results and expectations"
+        },
+        "tool_use_appropriateness": {
+          "score": 5,
+          "justification": "Tool orchestration score based on 0 tool calls"
+        },
+        "actionability": {
+          "score": 2,
+          "justification": "Actionability scored based on specificity and clarity of recommendations"
+        },
+        "hallucination_detection": {
+          "score": 5,
+          "justification": "No unsupported claims or fabrications detected in response"
+        }
+      },
+      "average_rubric_score": 4.0
+    }
+  ]
+}

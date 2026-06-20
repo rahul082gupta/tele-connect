@@ -1,0 +1,27 @@
+column,issue,affected_rows,strategy
+age,Missing Values,10,Imputed later
+gender,Missing Values,50,Imputed later
+tenure_months,Missing Values,11,Imputed later
+monthly_charges,Missing Values,12,Imputed later
+total_charges,Missing Values,23,Imputed later
+internet_service,Missing Values,505,Imputed later
+avg_monthly_gb_used,Missing Values,15,Imputed later
+avg_monthly_minutes,Missing Values,82,Imputed later
+satisfaction_score,Missing Values,20,Imputed later
+payment_method,Missing Values,30,Imputed later
+ALL_COLUMNS,Duplicate Rows,50,Removed
+age,Impossible Age,20,Set to NaN
+tenure_months,Impossible Tenure,5,Set to NaN
+monthly_charges,Negative Charges,3,Set to NaN
+gender,Inconsistent Encoding,5,Standardized Categories
+phone_service,Inconsistent Encoding,4,Standardized Categories
+internet_service,Inconsistent Encoding,2,Standardized Categories
+payment_method,Inconsistent Encoding,4,Standardized Categories
+age,Potential Outliers,18,Retained for modeling
+tenure_months,Potential Outliers,223,Retained for modeling
+monthly_charges,Potential Outliers,18,Retained for modeling
+total_charges,Potential Outliers,300,Retained for modeling
+avg_monthly_gb_used,Potential Outliers,234,Retained for modeling
+num_support_tickets,Potential Outliers,26,Retained for modeling
+avg_monthly_minutes,Potential Outliers,18,Retained for modeling
+satisfaction_score,Potential Outliers,34,Retained for modeling
